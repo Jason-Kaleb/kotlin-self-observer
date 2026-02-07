@@ -40,3 +40,8 @@ jobs:
             docker push $IMAGE_TAG
         env:
           OWNER_LC: ${{ env.OWNER_LC }}
+
+      - name: Deploy to Railway
+        run: railway up --image ghcr.io/jason-kaleb/kotlin-self-observer:latest --non-interactive
+        env:
+          RAILWAY_API_KEY: ${{ secrets.RAILWAY_API_KEY }}
