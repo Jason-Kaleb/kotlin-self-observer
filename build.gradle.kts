@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.ktor)
     alias(libs.plugins.kotlin.plugin.serialization)
+    id("org.jlleitschuh.gradle.ktlint") version "11.5.1"
 }
 
 group = "com.example"
@@ -13,6 +14,12 @@ application {
 
 kotlin {
     jvmToolchain(21)
+}
+
+ktlint {
+    version.set("0.50.0")
+    android.set(false)
+    outputColorName.set("RED")
 }
 
 dependencies {
