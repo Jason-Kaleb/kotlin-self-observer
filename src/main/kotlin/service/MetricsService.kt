@@ -13,7 +13,7 @@ object MetricsService {
     fun incrementRequests() {
         totalRequests.incrementAndGet()
     }
-    
+
     fun getTotalRequests(): Long {
         return totalRequests.get()
     }
