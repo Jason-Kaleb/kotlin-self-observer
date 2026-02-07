@@ -16,5 +16,11 @@ class ApplicationTest {
         client.get("/health").apply {
             assertEquals(HttpStatusCode.OK, status)
         }
+        client.get("/uptime").apply {
+            assertEquals(HttpStatusCode.OK, status)
+        }
+        client.get("metrics").apply {
+            assertEquals(HttpStatusCode.OK, status)
+        }
     }
 }
