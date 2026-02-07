@@ -11,9 +11,14 @@ fun Application.configureRouting() {
     routing {
         get("/health") {
             call.respond(mapOf("status" to "UP"))
+            MetricsService.incrementRequests()
         }
         get("/uptime") {
             call.respond(mapOf("uptimeSeconds" to MetricsService.getUptimeSeconds()))
+            MetricsService.incrementRequests()
+        }
+        get("/metrics") {
+            call.respond(mapOf("totalRequests" to MetricsService.getTotalRequests()))
         }
     }
 }
