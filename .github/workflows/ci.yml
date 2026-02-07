@@ -41,6 +41,17 @@ jobs:
         env:
           OWNER_LC: ${{ env.OWNER_LC }}
 
+      - name: Install Railway CLI if missing
+        run: |
+          if ! command -v railway &> /dev/null
+          then
+            echo "Railway CLI not found, installing..."
+            curl -sSL https://railway.app/install.sh | sh
+            export PATH="$HOME/.railway/bin:$PATH"
+          else
+            echo "Railway CLI already installed, skipping."
+          fi
+
       - name: Deploy to Railway
         run: railway up --image ghcr.io/jason-kaleb/kotlin-self-observer:latest --non-interactive
         env:
