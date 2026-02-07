@@ -19,5 +19,8 @@ fun Application.configureRouting() {
         get("/metrics") {
             call.respond(mapOf("totalRequests" to MetricsService.getTotalRequests()))
         }
+        get("/time") {
+            call.respond(mapOf("serverTime" to System.currentTimeMillis()))
+        }
     }
 }
